@@ -64,7 +64,7 @@ Review the code on the GitHub repository by visiting the [GitHub Repository](htt
 6.  To save books for later, click "Login/Signup" and either log in or sign up.
     ![blah blah](./images/3.png)
 7.  Once logged in, you can save books from your search results.
-    ![blah blah](./images/4.png)
+    ![blh](./images/4.png)
 8.  To see your saved books, select the "My Saved Books" option.
     ![blah blah](./images/5.png)
 9.  You can also remove books from your saved list anytime.
