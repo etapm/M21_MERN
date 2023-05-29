@@ -22,11 +22,26 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
-server.applyMiddleware({ app });
+const _dirname = path.dirname("");
+const buildPath = path.join(_dirname, "../client/build");
+app.use(express.static(buildPath));
 
-db.once("open", () => {
-  app.listen(PORT, () => {
-    console.log(`🌍 Now listening on localhost:${PORT}`);
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-  });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+
+const startServer = async () => {
+  await server.start();
+  server.applyMiddleware({ app });
+
+  db.once("open", () => {
+    app.listen(PORT, () => {
+      console.log(`🌍 Now listening on localhost:${PORT}`);
+      console.log(
+        `Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`
+      );
+    });
+  });
+};
+
+startServer();
